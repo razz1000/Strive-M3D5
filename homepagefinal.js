@@ -1,9 +1,10 @@
-window.onload = function() {
+window.onload = function () {
+    // loadArtists("75621062");
     addGreenPlayImgEventListener()
     addListenerToLoveHeart()
     addListenerToFirstButton()
     addEventToArtistName()
-    }
+}
 
 
 
@@ -31,7 +32,7 @@ function showOrHideHeart() {
     document.querySelector('footer i:first-of-type').classList.toggle('visible')
 }
 
-function addListenerToFirstButton () {
+function addListenerToFirstButton() {
     let seeAllBtnNode = document.querySelectorAll('.see-all-btn')
     seeAllBtnNode[0].addEventListener('click', addNewRow)
     // console.log(seeAllBtnNode)
@@ -48,6 +49,46 @@ function addEventToArtistName() {
     let artistNode = document.querySelector('.p-artist-name')
     artistNode.addEventListener('click', changePage)
 }
-function changePage (e) {
+function changePage(e) {
     location.href = "/artist.html";
 }
+let loadArtists = (id) => {
+    fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/+${id}`, {
+        method: "GET",
+        headers: {
+            'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com',
+            'x-rapidapi-key': '0b0dc2c530msh8f8b7e3d91c4b39p18f7d2jsn1302039241ee'
+        }
+    })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .then((body) => {
+            let cards = document.getElementsByClassName("card");
+            const row = document.querySelectorAll(".rowspecial1");
+            row.innerHTML = "";
+            /*  for (let i = 0; i < body.data.length; i++) {
+                 let card = document.getElementsByClassName('card');
+                 card.className = "card";
+                 card.innerHTML =
+                     `<div class="col">
+                 <div class="card mb-3">
+                     <div class="row no-gutters row-remove-margin row-remove-margin">
+                         <div class="col-4">
+                             <img class="first-section-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fg%2FOz8AAOSwnIleltAL%2Fs-l640.jpg&f=1&nofb=1" alt="...">
+                         </div>
+                         <div class="col-6 flex-container">
+                             <div class="card-body card-body-section1">
+                                 <p class="card-text">${cards.title}</p>
+                             </div>
+                         </div>
+                         <div class="col-2 flex-container">
+                             <img class="green-play-img" src="http://hypebot.typepad.com/.a/6a00d83451b36c69e201bb09b0b161970d-200wi" alt="">
+                         </div>
+                     </div>
+                 </div>
+             </div>` */
+            /*             }
+                        row.appendChild(cards); */
+        });
+};
+loadArtists();

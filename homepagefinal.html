@@ -13,10 +13,43 @@
     <title>Hello, world!</title>
   </head>
   <body>
+<!-- <script>
+function searchDeezer(query) {
+    fetch (`https://striveschool-api.herokuapp.com/api/deezer/album/ + ${id}`,{
+        method: "GET",
+        headers: {
+        'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com',
+		'x-rapidapi-key': '0b0dc2c530msh8f8b7e3d91c4b39p18f7d2jsn1302039241ee'
+                }
+    })
+    .then(response => response.json())
+    .then((data) => {
+        console.log("resolved");
+      
+        if (data.data) {
+           constobj = { title: query, albums = data.data};
+           album.push(obj);
+           console.log(albums);
+        }else { error =true};
+        })
+        .catch(error => console.log(error));
+    }
 
+    window.onload = function () {
+        const search = document.getElementById("search");
+        search.addEventListener("keyup", function (e) {
+            const query = e.target.value;
+            searchDeezer(query);
+        });
+    };
+    const pageContent = document.getElementById("pageContent");
+    pageContent.childNodes.forEach ((node, index) => {
+        if (index !== 1) {
+            node.remove();
+        }
+    })
+</script> -->
                  <!-- Sidebar -->
-
-
                  <!-- Wrapper -->
     <div class="wrapper d-flex">
 
@@ -158,12 +191,12 @@
                 
                 <!-- first section -->
                 <div class="container-fluid first-section">
-                    <div class="row">
+                    <div class="row" id="rowspecial1">
                         <div class="col">
                             <h2 class="text-white mt-5 mb-4">Good morning</h2>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row rowspecial1">
                         <div class="col">
                             <div class="card mb-3">
                                 <div class="row no-gutters row-remove-margin row-remove-margin">
