@@ -250,3 +250,59 @@ let removeHalfHearts = () => {
   }
 
                 
+
+
+  /* THIS IS WHERE THE DYNAMIC DATA INPUT STARTS FROM  */
+
+  const options = {
+
+  };
+
+      fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/1/top?limit=50" /* + query */, options)
+      .then((response) => response.json()
+      .then(albums => {
+        console.log(albums)
+        console.log(albums.tracklist)
+    
+        const table1 = document.querySelector(".table-body")
+        table1.innerHTML = ""
+
+        albums.forEach(album => {
+          const tr1 = document.createElement("tr");
+          /* tr1.classList.add("col-sm-4") */
+          tr1.innerHTML = ` <tr>
+          <th scope="row">2</th>
+          <td>
+            <img
+              src="${album.cover_small}"
+              alt="Album cover"
+              class="table-cover-picture mr-2"
+            />
+            <span>${album.title}</span>
+          </td>
+          <td>103,112,002</td>
+          <td>5:45</td>
+          <td>
+            <div
+              class="popup"
+              onclick="addSongToLikedAlbum()"
+              onclick="heartFilledFunction()"
+            >
+              <i class="bi bi-heart heart-table">
+                <i class="bi bi-suit-heart-fill heart-filled"></i>
+                <span class="popuptext myPopup">
+                  Added to your Liked Songs
+                </span>
+              </i>
+            </div>
+          </td>
+        </tr>
+          `
+          table1.appendChild(tr1)
+        });
+        
+    
+    
+      })
+
+      );  
