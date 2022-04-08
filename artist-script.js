@@ -271,7 +271,7 @@ let removeHalfHearts = () => {
           const tr1 = document.createElement("tr");
           /* tr1.classList.add("col-sm-4") */
           tr1.innerHTML = ` <tr>
-          <th scope="row">2</th>
+          <th scope="row">*</th>
           <td>
             <img
               src="${body.data[i].album.cover_small}"
@@ -280,8 +280,8 @@ let removeHalfHearts = () => {
             />
             <span>${body.data[i].album.title}</span>
           </td>
-          <td>103,112,002</td>
-          <td>5:45</td>
+          <td>${body.data[i].rank}</td>
+          <td>${body.data[i].duration}</td>
           <td>
             <div
               class="popup"
