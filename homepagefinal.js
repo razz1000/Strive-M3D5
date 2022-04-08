@@ -1,5 +1,5 @@
 window.onload = function () {
-    // loadArtists("75621062");
+    loadArtists("7562101");
     addGreenPlayImgEventListener()
     addListenerToLoveHeart()
     addListenerToFirstButton()
@@ -61,14 +61,17 @@ let loadArtists = (id) => {
         }
     })
         .then((response) => response.json())
-        .then((data) => console.log(data))
-        .then((body) => {
+        .then((data) => { 
+            console.log(data)
+         
+            console.log(body)
             let cards = document.getElementsByClassName("card");
-            const row = document.querySelectorAll(".rowspecial1");
-            row.innerHTML = "";
-            /*  for (let i = 0; i < body.data.length; i++) {
+            const row1 = document.querySelector(".rowspecial1");
+            row1.innerHTML = "";
+/*               for (let i = 0; i < body.data.length; i++) */ {
                  let card = document.getElementsByClassName('card');
                  card.className = "card";
+
                  card.innerHTML =
                      `<div class="col">
                  <div class="card mb-3">
@@ -78,7 +81,7 @@ let loadArtists = (id) => {
                          </div>
                          <div class="col-6 flex-container">
                              <div class="card-body card-body-section1">
-                                 <p class="card-text">${cards.title}</p>
+                                 <p class="card-text">${data.body.title}</p>
                              </div>
                          </div>
                          <div class="col-2 flex-container">
@@ -86,9 +89,10 @@ let loadArtists = (id) => {
                          </div>
                      </div>
                  </div>
-             </div>` */
-            /*             }
-                        row.appendChild(cards); */
+             </div>` 
+                        }
+        row1.appendChild(cards); 
         });
 };
-loadArtists();
+
+
