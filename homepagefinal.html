@@ -13,10 +13,43 @@
     <title>Hello, world!</title>
   </head>
   <body>
+<!-- <script>
+function searchDeezer(query) {
+    fetch (`https://striveschool-api.herokuapp.com/api/deezer/album/ + ${id}`,{
+        method: "GET",
+        headers: {
+        'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com',
+		'x-rapidapi-key': '0b0dc2c530msh8f8b7e3d91c4b39p18f7d2jsn1302039241ee'
+                }
+    })
+    .then(response => response.json())
+    .then((data) => {
+        console.log("resolved");
+      
+        if (data.data) {
+           constobj = { title: query, albums = data.data};
+           album.push(obj);
+           console.log(albums);
+        }else { error =true};
+        })
+        .catch(error => console.log(error));
+    }
 
+    window.onload = function () {
+        const search = document.getElementById("search");
+        search.addEventListener("keyup", function (e) {
+            const query = e.target.value;
+            searchDeezer(query);
+        });
+    };
+    const pageContent = document.getElementById("pageContent");
+    pageContent.childNodes.forEach ((node, index) => {
+        if (index !== 1) {
+            node.remove();
+        }
+    })
+</script> -->
                  <!-- Sidebar -->
-
-
                  <!-- Wrapper -->
     <div class="wrapper d-flex">
 
@@ -30,6 +63,13 @@
             </div>
             <div class="mt-2">
               <i class="bi bi-search mr-3"></i> <span>Search</span>
+              <div class="searchPanel">
+                  <label for="search">
+                <input type="search" id="search" name="search" value="search">
+                <button class="search" onclick="searchFunction(event)">Search</button>
+            </label>
+            </div>
+            
             </div>
             <div class="mt-2">
               <i class="bi bi-collection-fill mr-3"></i> <span>Library</span>
@@ -138,7 +178,9 @@
                         <div class="arrows">    
                             <i class="arrow1 bi bi-chevron-left text-white"></i>
                             <i class="arrow2 bi bi-chevron-right text-white"></i>
-                        </div>    
+                        </div>
+                        
+                            
                         <!-- </div> -->
                         <div class="navbar-col profile-picture-button">
                             <div class="">
@@ -158,12 +200,12 @@
                 
                 <!-- first section -->
                 <div class="container-fluid first-section">
-                    <div class="row">
+                    <div class="row" id="rowspecial1">
                         <div class="col">
                             <h2 class="text-white mt-5 mb-4">Good morning</h2>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row rowspecial1">
                         <div class="col">
                             <div class="card mb-3">
                                 <div class="row no-gutters row-remove-margin row-remove-margin">
@@ -250,93 +292,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="card mb-3">
-                                <div class="row no-gutters row-remove-margin row-remove-margin">
-                                    <div class="col-4">
-                                    <img class="first-section-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.imgur.com%2FKv2zIK0.png&f=1&nofb=1" alt="...">
-                                    </div>
-                                    <div class="col-6 flex-container">
-                                        <div class="card-body card-body-section1">
-                                            <p class="card-text">Midian</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 flex-container">
-                                        <img class="green-play-img" src="http://hypebot.typepad.com/.a/6a00d83451b36c69e201bb09b0b161970d-200wi" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mb-3">
-                                <div class="row no-gutters row-remove-margin">
-                                    <div class="col-4">
-                                    <img class="first-section-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F4.bp.blogspot.com%2F-NHOLHNO4nj0%2FThRi6H63xCI%2FAAAAAAAAAN8%2FEk7j_jwu_iE%2Fs1600%2Fninphetamine.jpg&f=1&nofb=1" alt="...">
-                                    </div>
-                                    <div class="col-6 flex-container">
-                                        <div class="card-body card-body-section1">
-                                            <p class="card-text">Nymphetamine</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 flex-container">
-                                        <img class="green-play-img" src="http://hypebot.typepad.com/.a/6a00d83451b36c69e201bb09b0b161970d-200wi" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mb-3">
-                                <div class="row no-gutters row-remove-margin">
-                                    <div class="col-4">
-                                    <img class="first-section-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.upsetmagazine.com%2Fimages%2Farticle%2FArtist-Images%2FB%2FBring-Me-The-Horizon%2FBring-Me-The-Horizon-Amo_190124_121835.jpg&f=1&nofb=1" alt="...">
-                                    </div>
-                                    <div class="col-6 flex-container">
-                                        <div class="card-body card-body-section1">
-                                            <p class="card-text">amo</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 flex-container">
-                                        <img class="green-play-img" src="http://hypebot.typepad.com/.a/6a00d83451b36c69e201bb09b0b161970d-200wi" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mb-3">
-                                <div class="row no-gutters row-remove-margin">
-                                    <div class="col-4">
-                                    <img class="first-section-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.sndcdn.com%2Favatars-000654264044-j4nj68-t500x500.jpg&f=1&nofb=1" alt="...">
-                                    </div>
-                                    <div class="col-6 flex-container">
-                                        <div class="card-body card-body-section1">
-                                            <p class="card-text">LE BASK</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 flex-container">
-                                        <img class="green-play-img" src="http://hypebot.typepad.com/.a/6a00d83451b36c69e201bb09b0b161970d-200wi" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mb-3">
-                                <div class="row no-gutters row-remove-margin">
-                                    <div class="col-4">
-                                    <img class="first-section-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fen.metal-tracker.com%2Ftorrents%2Fimages%2F2726010.jpg&f=1&nofb=1" alt="...">
-                                    </div>
-                                    <div class="col-6 flex-container">
-                                        <div class="card-body card-body-section1">
-                                            <p class="card-text">Opeth</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-2 flex-container">
-                                        <img class="green-play-img" src="http://hypebot.typepad.com/.a/6a00d83451b36c69e201bb09b0b161970d-200wi" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div>
                 </div>
 
                 <!-- second section -->

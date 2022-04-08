@@ -243,10 +243,65 @@ let removeHalfHearts = () => {
 
   }
 
-
+/* 
   let redirectToAlbumPage = (event) => {
     location.href = "albumpage.html";
     console.log(event);
   }
 
                 
+ */
+
+
+  let catchingtheURLFunction = () => {
+    let urlQuery = new URLSearchParams(document.location.search).get("id")
+    console.log(urlQuery)
+
+   fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/" + urlQuery + "/top?limit=10")
+   .then(response => response.json())
+   .then(body => { 
+
+     console.log(body)
+
+
+        const table1 = document.querySelector(".table-borderless")
+        table1.innerHTML = ""
+      for(let i = 0; i < body.data.length; i++) { 
+
+          const tr1 = document.createElement("tr");
+          /* tr1.classList.add("col-sm-4") */
+          tr1.innerHTML = ` <tr>
+          <th scope="row">*</th>
+          <td>
+            <img
+              src="${body.data[i].album.cover_small}"
+              alt="Album cover"
+              class="table-cover-picture mr-2"
+            />
+            <span>${body.data[i].album.title}</span>
+          </td>
+          <td>${body.data[i].rank}</td>
+          <td>${body.data[i].duration}</td>
+          <td>
+            <div
+              class="popup"
+              onclick="addSongToLikedAlbum()"
+              onclick="heartFilledFunction()"
+            >
+              <i class="bi bi-heart heart-table">
+                <i class="bi bi-suit-heart-fill heart-filled"></i>
+                <span class="popuptext myPopup">
+                  Added to your Liked Songs
+                </span>
+              </i>
+            </div>
+          </td>
+        </tr>
+          `
+          table1.appendChild(tr1)
+      
+        }
+        });
+   }
+
+   catchingtheURLFunction();

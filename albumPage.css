@@ -79,7 +79,10 @@ body {
     margin: 15px;
     height: 185px;
     width: 185px;
+    object-fit: cover;
 }
+
+
 .album-container {
     padding-top: 60px;
     padding-bottom: 10px;
