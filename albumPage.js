@@ -32,3 +32,45 @@ let showPauseButton = (event) => {
 
 
    /*     document.querySelector('#page-heart-icon').classList.toggle('solid-heart-icon') */
+
+
+   let catchingtheURLFunction = () => {
+     let urlQuery = new URLSearchParams(document.location.search).get("id")
+     console.log(urlQuery)
+
+    fetch("https://striveschool-api.herokuapp.com/api/deezer/album/" + urlQuery)
+    .then(response => response.json())
+    .then(body => { 
+
+      console.log(body)
+
+ 
+    
+
+    let newrow = document.querySelector(".newrow1");
+    newrow.innerHTML = ""
+
+    for (let i = 0; i < body.tracks.data.length; i++) {  
+      let div1 = document.createElement("div")
+      div1.classList.add("col-5")
+
+      div1.innerHTML = ` <div class="ml-3 pb-4">
+    <span class="track-num">${body.tracks.data[i]}</span>
+    <a href="./artist.html?id=${body.artist.id}">  
+    <span class="album-song ml-4"
+      ><strong class="track-decoration"
+        >${body.tracks.data[i].title}</strong
+      ><br /><span class="singer-name">${body.artist.name}</span></span
+    ></a>
+  </div>
+    `
+      newrow.appendChild(div1)
+  }
+
+})}
+
+/*   .catch(error => console.log(error)); */
+
+ 
+   catchingtheURLFunction();
+
