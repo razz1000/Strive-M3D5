@@ -33,9 +33,9 @@ let id = new URLSearchParams(window.location.search)
 
 
 
-window.onload = () => {
+
   fetchFirst();
-};
+
 
 const fetchFirst = () => {
   fetch("https://striveschool-api.herokuapp.com/api/deezer/album/75621062),{
@@ -53,54 +53,56 @@ const fetchFirst = () => {
 
 */
 
-const options = {};
+window.onload = () => {
+    let id = new URLSearchParams(window.location.search);
 
-fetch(
-    "https://striveschool-api.herokuapp.com/api/deezer/album/123456" /*+ id.get("albumId") */,
-    options
-).then((response) =>
-    response.json().then((albums) => {
-        console.log(albums);
-        console.log(albums.tracklist);
+    const options = {};
 
-        const newSong = document.querySelector("#songContainer");
-        newSong.innerHTML = "";
+    fetch(
+        "https://striveschool-api.herokuapp.com/api/deezer/album/123456" /*+ id.get("albumId") */
+    ).then((response) =>
+        response.json().then((albums, artist) => {
+            console.log(albums);
+            console.log(artist.data);
 
-        albums.forEach((album) => {
-            const newTrack = document.createElement(
-                "#album-track-list > div:nth-child(1)"
-            );
-            /* newTrack.classList.add("col-sm-4") */
-            newTrack.innerHTML = ` <div class="ml-3 pb-4">
+            const newSong = document.querySelector("#songContainer");
+            newSong.innerHTML = "";
+
+            albums.forEach((album) => {
+                const newTrack = document.createElement(
+                    "#album-track-list > div:nth-child(1)"
+                );
+                /* newTrack.classList.add("col-sm-4") */
+                newTrack.innerHTML = ` <div class="ml-3 pb-4">
             <span class="track-num">2.</span>
             <span class="album-song ml-4"
                 ><strong
                     id="songConatainer"
                     class="track-decoration"
-                    >Somebody To Love</strong
+                    >${tracks.data[0].title}}</strong
                 ><br /><span class="singer-name"
                     >Queen</span
                 ></span
             >
         </div>
         `;
-            newSong.appendChild(newTrack);
-        });
-    })
-);
+                newSong.appendChild(newTrack);
+            });
+        })
+    );
 
-let heroAlbumCover = document.querySelector("#hero-img");
-heroAlbumCover.innerHTML = "";
-let newDivTop = document.createElement("div");
-heroAlbumCover.appendChild(newDivTop);
+    let heroAlbumCover = document.querySelector("#hero-img");
+    heroAlbumCover.innerHTML = "";
+    let newDivTop = document.createElement("div");
+    heroAlbumCover.appendChild(newDivTop);
 
-const heroTopcontainer = `<section id="album-page-hero">
-<div class="container-fluid album-container">
+    const heroTopcontainer = `<section id="album-page-hero">
+    <div class="container-fluid album-container">
     <div class="row">
         <div class="col-2">
             <img
                 id="hero-img"
-                src="https://i.pinimg.com/1200x/21/b1/c7/21b1c7f4af7c339fff746041a0e2403f.jpg"
+                src=""
                 class="img-fluid"
                 alt="Hybrid theory album cover"
             />
@@ -139,53 +141,4 @@ const heroTopcontainer = `<section id="album-page-hero">
             </div>
         </div>
     </div>`;
-
-/*const options = {};
-
-fetch(
-    "https://striveschool-api.herokuapp.com/api/deezer/album/" /* + query ,
-    options
-).then((response) =>
-    response.json().then((albums) => {
-        console.log(albums);
-        console.log(albums.tracklist);
-
-        const table1 = document.querySelector(".table-body");
-        table1.innerHTML = "";
-
-        albums.forEach((album) => {
-            const tr1 = document.createElement("tr");
-            /* tr1.classList.add("col-sm-4") 
-            tr1.innerHTML = ` <tr>
-        <th scope="row">2</th>
-        <td>
-          <img
-            src="${album.cover_small}"
-            alt="Album cover"
-            class="table-cover-picture mr-2"
-          />
-          <span></span>
-        </td>
-        <td>103,112,002</td>
-        <td>5:45</td>
-        <td>
-          <div
-            class="popup"
-            onclick="addSongToLikedAlbum()"
-            onclick="heartFilledFunction()"
-          >
-            <i class="bi bi-heart heart-table">
-              <i class="bi bi-suit-heart-fill heart-filled"></i>
-              <span class="popuptext myPopup">
-                Added to your Liked Songs
-              </span>
-            </i>
-          </div>
-        </td>
-      </tr>
-        `;
-            table1.appendChild(tr1);
-        });
-    })
-);
-*/
+};
